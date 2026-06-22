@@ -1,0 +1,27 @@
+CREATE DATABASE BankDB;
+USE BankDB;
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    DOB DATE,
+    Balance DECIMAL(10,2),
+    LastModified DATE
+);
+SELECT * FROM Customers;
+SELECT * FROM Loans;
+INSERT INTO Customers (CustomerID, Name, DOB, Balance, LastModified, IsVIP)
+VALUES
+(3, 'Robert King', '1960-08-12', 12000, CURDATE(), FALSE),
+(4, 'Emily Davis', '1975-03-25', 8500, CURDATE(), FALSE),
+(5, 'Michael Wilson', '1952-11-18', 20000, CURDATE(), FALSE),
+(6, 'Sophia Taylor', '1995-07-09', 5000, CURDATE(), FALSE),
+(7, 'Daniel Brown', '1958-01-30', 15000, CURDATE(), FALSE);
+INSERT INTO Loans
+(LoanID, CustomerID, LoanAmount, InterestRate, StartDate, EndDate)
+VALUES
+(2, 2, 8000, 6.5, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 45 DAY)),
+(3, 3, 10000, 7.0, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 15 DAY)),
+(4, 4, 12000, 5.5, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 60 DAY)),
+(5, 5, 15000, 6.0, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 20 DAY)),
+(6, 6, 7000, 8.0, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 10 DAY)),
+(7, 7, 20000, 5.0, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 25 DAY));
