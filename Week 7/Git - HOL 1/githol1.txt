@@ -1,0 +1,113 @@
+HP@HP-USER001 MINGW64 ~
+$ git --version
+git version 2.54.0.windows.1
+
+HP@HP-USER001 MINGW64 ~
+$ git config --global user.name "Abishek Kumar"
+
+$ git config --global user.email "abishekkumar2425@gmail.com"
+
+HP@HP-USER001 MINGW64 ~
+$ git config --global --list
+user.name=Abishek Kumar
+user.email=abishekkumar2425@gmail.com
+credential.helper=manager
+
+HP@HP-USER001 MINGW64 ~
+$ notepad++
+
+HP@HP-USER001 MINGW64 ~
+$ git config --global core.editor "notepad++.exe -multiInst -nosession"
+
+HP@HP-USER001 MINGW64 ~
+$ git config --global -e
+
+HP@HP-USER001 MINGW64 ~
+$ git init GitDemo
+Initialized empty Git repository in C:/Users/HP/GitD
+emo/.git/
+
+HP@HP-USER001 MINGW64 ~
+$ cd GitDemo
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ ls -al
+total 16
+drwxr-xr-x 1 HP 197610 0 Jul 27 03:48 ./
+drwxr-xr-x 1 HP 197610 0 Jul 27 03:48 ../
+drwxr-xr-x 1 HP 197610 0 Jul 27 03:48 .git/
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ echo "Welcome to the version control" >> welcome.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ ls -al
+total 17
+drwxr-xr-x 1 HP 197610  0 Jul 27 03:51 ./
+drwxr-xr-x 1 HP 197610  0 Jul 27 03:48 ../
+drwxr-xr-x 1 HP 197610  0 Jul 27 03:48 .git/
+-rw-r--r-- 1 HP 197610 31 Jul 27 03:51 welcome.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ cat welcome.txt
+Welcome to the version control
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        welcome.txt
+
+nothing added to commit but untracked files present (use "git add" t
+o track)
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git add welcome.txt
+warning: in the working copy of 'welcome.txt', LF will be replaced b
+y CRLF the next time Git touches it
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git commit
+[master (root-commit) 8528751] Add welcome.txt file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git remote add origin https://gitlab.com/gitdemo2953730/GitDemo.git
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git remote -v
+origin  https://gitlab.com/gitdemo2953730/GitDemo.git (fetch)
+origin  https://gitlab.com/gitdemo2953730/GitDemo.git (push)
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git pull origin master
+info: please complete authentication in your browser...
+
+
+HP@HP-USER001 MINGW64 ~/GitDemo
+$ git pull origin master
+info: please complete authentication in your browser...
+fatal: couldn't find remote ref master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git push -u origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 257 bytes | 128.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/gitdemo2953730/GitDemo.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$
