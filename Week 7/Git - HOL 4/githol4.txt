@@ -1,0 +1,306 @@
+HP@HP-USER001 MINGW64 ~
+$ ls
+'3D Objects'/
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ GitDemo/
+ IdeaProjects/
+ IntelGraphicsProfiles/
+ Links/
+'Local Settings'@
+ Music/
+'My Documents'@
+ NTUSER.DAT
+ NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TM.blf
+ NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ OneDrive/
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+'Start Menu'@
+ Templates@
+ Videos/
+ battery-report.html
+ eclipse-workspace/
+ hellojava/
+ myfirstreact1/
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+ react-workspace/
+
+HP@HP-USER001 MINGW64 ~
+$ cd GitDemo
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch GitWork
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git switch GitWork
+Switched to branch 'GitWork'
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ touch hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ ls
+branchfile.txt  hello.xml  log/  sample.log  welcome.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ echo "<message>Hello from GitWork branch</message>" > hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ git status
+On branch GitWork
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ git add hello.xml
+warning: in the working copy of 'hello.xml', LF will be replaced by CRLF the
+ next time Git touches it
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ git commit -m "Added hello.xml in GitWork branch"
+[GitWork b5ed93a] Added hello.xml in GitWork branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitWork)
+$ git switch master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ echo "<message>Hello from master branch</message>" > hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git add hello.xml
+warning: in the working copy of 'hello.xml', LF will be replaced by CRLF the
+ next time Git touches it
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git commit -m "Added hello.xml in master"
+[master c68108f] Added hello.xml in master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate --all
+* c68108f (HEAD -> master) Added hello.xml in master
+| * b5ed93a (GitWork) Added hello.xml in GitWork branch
+|/
+* e367d0f (origin/master) Added branchfile in GitNewBranch
+* acb22b1 Add gitignore file
+* 8528751 Add welcome.txt file
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git diff master GitWork
+diff --git a/hello.xml b/hello.xml
+index 82868a7..0bf4c19 100644
+--- a/hello.xml
++++ b/hello.xml
+@@ -1 +1 @@
+-<message>Hello from master branch</message>
++<message>Hello from GitWork branch</message>
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git merge GitWork
+Auto-merging hello.xml
+CONFLICT (add/add): Merge conflict in hello.xml
+Automatic merge failed; fix conflicts and then commit the result.
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ cat hello.xml
+<<<<<<< HEAD
+<message>Hello from master branch</message>
+=======
+<message>Hello from GitWork branch</message>
+>>>>>>> GitWork
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ notepad hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ notepad hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ notepad hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both added:      hello.xml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git add hello.xml
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   hello.xml
+
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ cp hello.xml hello.xml.bak
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ echo "*.bak" >> .gitignore
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   hello.xml
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.xml.bak
+
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ ls -la
+total 25
+drwxr-xr-x 1 HP 197610  0 Jul 28 01:31 ./
+drwxr-xr-x 1 HP 197610  0 Jul 28 01:22 ../
+drwxr-xr-x 1 HP 197610  0 Jul 28 01:31 .git/
+-rw-r--r-- 1 HP 197610 17 Jul 28 01:31 .gitignore
+-rw-r--r-- 1 HP 197610 38 Jul 28 00:48 branchfile.txt
+-rw-r--r-- 1 HP 197610 89 Jul 28 01:29 hello.xml
+-rw-r--r-- 1 HP 197610 89 Jul 28 01:31 hello.xml.bak
+drwxr-xr-x 1 HP 197610  0 Jul 27 23:43 log/
+-rw-r--r-- 1 HP 197610  0 Jul 27 23:43 sample.log
+-rw-r--r-- 1 HP 197610 31 Jul 27 03:51 welcome.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git check-ignore -v hello.xml.bak
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ notepad .gitignore
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   hello.xml
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   .gitignore
+
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git add .gitignore
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        modified:   .gitignore
+        modified:   hello.xml
+
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master|MERGING)
+$ git commit -m "Resolved merge conflict and updated gitignore"
+[master db0c338] Resolved merge conflict and updated gitignore
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch
+  GitWork
+* master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch -d GitWork
+Deleted branch GitWork (was b5ed93a).
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch
+* master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate --all
+*   db0c338 (HEAD -> master) Resolved merge conflict and updated gitignore
+|\
+| * b5ed93a Added hello.xml in GitWork branch
+* | c68108f Added hello.xml in master
+|/
+* e367d0f (origin/master) Added branchfile in GitNewBranch
+* acb22b1 Add gitignore file
+* 8528751 Add welcome.txt file
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$

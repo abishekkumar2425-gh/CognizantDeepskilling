@@ -1,0 +1,99 @@
+
+HP@HP-USER001 MINGW64 ~
+$ cd /c/Users/HP/GitDemo
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git remote -v
+origin  https://gitlab.com/gitdemo2953730/GitDemo.git (fetch)
+origin  https://gitlab.com/gitdemo2953730/GitDemo.git (push)
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch GitNewBranch
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch -a
+  GitNewBranch
+* master
+  remotes/origin/master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitNewBranch)
+$ git branch
+* GitNewBranch
+  master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitNewBranch)
+$ echo "This file is created in GitNewBranch" > branchfile.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (GitNewBranch)
+$ git status
+On branch GitNewBranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        branchfile.txt
+
+nothing added to commit but untracked files present (use "git add" to tra
+ck)
+This message is displayed because 'diff.tool' is not configured.
+See 'git difftool --tool-help' or 'git help config' for more details.
+'git difftool' will now attempt to use one of the following tools:
+opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge emerge vimdiff nvimdiff
+
+Viewing (1/1): 'branchfile.txt'
+Launch 'vimdiff' [Y/n]? y
+2 files to edit
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git merge GitNewBranch
+Updating acb22b1..e367d0f
+Fast-forward
+ branchfile.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 branchfile.txt
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git log --oneline --graph --decorate
+* e367d0f (HEAD -> master, GitNewBranch) Added branchfile in GitNewBranch
+* acb22b1 (origin/master) Add gitignore file
+* 8528751 Add welcome.txt file
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch -d GitNewBranch
+Deleted branch GitNewBranch (was e367d0f).
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git branch
+* master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$ git push origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 373 bytes | 373.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/gitdemo2953730/GitDemo.git
+   acb22b1..e367d0f  master -> master
+
+HP@HP-USER001 MINGW64 ~/GitDemo (master)
+$
+
